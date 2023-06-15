@@ -1,11 +1,4 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
 .navbar{
   text-align: center;
@@ -38,6 +31,17 @@ li a:hover {
   background-color: #e59400;
 }
 
+nav-link{
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav-link:hover {
+  background-color: #e59400;
+}
 
 
 .App-header {

@@ -9,10 +9,11 @@ function Navbar() {
     <div className='navbar'>
       <ul>
         <li><Link className="nav-link" to="/"><li>Página Inicial</li></Link></li>
-        <li><a href="default.asp">Filmes</a></li>
-        <li><a href="news.asp">Séries</a></li>
-        <li><a href="contact.asp">Subscrições</a></li>
-        <li><a href="about.asp">Utilizadores</a></li>
+        <li><Link className="nav-link" to="/Filmes"><li>Filmes</li></Link></li>
+        <li><Link className="nav-link" to="/Series"><li>Séries</li></Link></li>
+        <li><Link className="nav-link" to="/Subscricoes"><li>Subscrições</li></Link></li>
+        <li><Link className="nav-link" to="/Utilizadores"><li>Utilizadores</li></Link></li>
+
       </ul>
     </div>
 

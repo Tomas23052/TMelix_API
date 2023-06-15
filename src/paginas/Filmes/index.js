@@ -198,7 +198,7 @@ function Filmes() {
                       <br />
                       <label>Imagem: </label>
                       <br />
-                      <input type="file" className="form-control" name="imagem" onChange={handleimageChange}/>
+                      <input type="text" className="form-control" name="imagem" onChange={handleChange}/>
                       <br />
                       <label>Sinopse: </label>
                       <br />

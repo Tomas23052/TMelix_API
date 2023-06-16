@@ -1,9 +1,4 @@
 
-
-.navbar{
-  text-align: center;
-}
-
 ul {
   list-style-type: none;
   margin: 0;
@@ -26,12 +21,17 @@ li a {
   text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
 li a:hover {
   background-color: #e59400;
+  color:white;
 }
 
-nav-link{
+.navbar1{
+  text-align: center;
+  text-decoration: none;
+}
+
+nav-link1{
   display: inline-block;
   color: white;
   text-align: center;
@@ -39,7 +39,7 @@ nav-link{
   text-decoration: none;
 }
 
-nav-link:hover {
+nav-link1:hover {
   background-color: #e59400;
 }
 

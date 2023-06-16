@@ -1,0 +1,113 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+
+  /* Sobre */
+
+  .App-cara {
+    height: 80%;
+    width: 70%;
+    pointer-events: none;
+  }
+
+  
+  .coluna{
+    float: center;
+    width: 50%;
+  }
+  
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+
+  /* Filmes */
+  .filmes-container {
+    width: 100%;
+    max-width: 1500px;
+    padding: 5 10px;
+    margin: 30px auto;
+  }
+  
+  .filmes-container header {
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  .filmes-container header button {
+    height: 50px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid #dcdce6;
+    background-color: #008000;
+    margin-left: 16px;
+    transition: border-color 0, 5s;
+  }
+  
+  .filmes-container header button:hover {
+    border-color: #510bac;
+  }
+  
+  th, td {
+    text-align: center;
+  }
+
+  /* Series */
+  .series-container {
+    width: 100%;
+    max-width: 1500px;
+    padding: 5 10px;
+    margin: 30px auto;
+  }
+  
+  .series-container header {
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  .series-container header button {
+    height: 50px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid #dcdce6;
+    background-color: #008000;
+    margin-left: 16px;
+    transition: border-color 0, 5s;
+  }
+  
+  .series-container header button:hover {
+    border-color: #510bac;
+  }
+  
+  th, td {
+    text-align: center;
+  }
+
+
+  body {
+    background-image: url("/src/paginas/minimal-gradient.jpg");
+  }

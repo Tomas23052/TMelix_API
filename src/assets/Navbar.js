@@ -13,6 +13,7 @@ function Navbar() {
         <li><Link className="nav-link1" to="/Series"><li>Séries</li></Link></li>
         <li><Link className="nav-link1" to="/Subscricoes"><li>Subscrições</li></Link></li>
         <li><Link className="nav-link1" to="/Utilizadores"><li>Utilizadores</li></Link></li>
+        <li><Link className="nav-link1" to="/Sobre"><li>Sobre</li></Link></li>
 
       </ul>
     </div>

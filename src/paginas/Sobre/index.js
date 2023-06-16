@@ -1,13 +1,9 @@
 import '../style.css'
 import React from 'react'
-import logo from '../../assets/logo.png';
-import melo from '../../paginas/melo.jpg';
-import tomas from '../../paginas/tomas.jpg';
-import { Link } from 'react-router-dom';
+import melo from '../../assets/melo.jpg';
+import tomas from '../../assets/tomas.jpg';
 import '../style.css'
 
-import axios from 'axios';
-import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 
 function Sobre() {
     return (
@@ -22,11 +18,10 @@ function Sobre() {
                     </div>
                 <div className="descricao">
                     <p>Trabalho Final da unidade curricular de Desenvolvimento Web. TFlix é uma aplicação que disponibiliza uma vasta gama de filmes que posteriormente podem ser subscritos pelos utilizadores interessados, ficando disponíveis por um determinado tempo.</p>
-                    <a href="https://github.com/ferndiogo/TFlix_DW">GitHub</a>
+                    <a href="https://github.com/FMelo23155/TMelix">TMelix - MVC</a>
                     <br />
-                    <a href="https://github.com/ferndiogo/TFlix_API">GitHub API</a>
-                    <br/><br/><br/>
-                <br></br>
+                    <a href="https://github.com/Tomas23052/TMelix_API">TMelix_API - React</a>
+                    
                 </div>
 
                 </div>

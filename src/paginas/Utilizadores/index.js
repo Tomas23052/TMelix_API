@@ -3,6 +3,14 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = String(date.getFullYear());
+    return `${day}/${month}/${year}`;
+  }
+
 function Utilizadores(){
     const baseUrl="https://localhost:7038/api/UtilizadoresAPI";
 
@@ -117,6 +125,8 @@ function Utilizadores(){
         })
     }
 
+   
+
     const pedidoDelete=async()=>{
         await axios.delete(baseUrl+"/"+utilizadorSelecionado.id)
         .then(response=>{
@@ -134,13 +144,13 @@ function Utilizadores(){
     }, [updateData])
 
     return(
-        <div className="container">
+        <div className="utilizadores-container">
             <br/><br/>
             <h1>Utilizadores</h1>
             <br/>
             <button className="btn btn-success" onClick={()=>abrirFecharModalAdicionar()}>Adicionar Utilizador</button>
             <br/><br/>
-            <table className="table table-bordered">
+            <table className="table table-dark table-striped mt-4">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -152,7 +162,7 @@ function Utilizadores(){
                         <th>Código Postal</th>
                         <th>Sexo</th>
                         <th>Data de Nascimento</th>
-                        <th>Username</th>
+                        <th>Função</th>
                         <th>UserID</th>
                         <th>Opções</th>
                     </tr>
@@ -168,7 +178,7 @@ function Utilizadores(){
                             <td>{utilizador.pais}</td>
                             <td>{utilizador.codPostal}</td>
                             <td>{utilizador.sexo}</td>
-                            <td>{utilizador.dataNasc}</td>
+                            <td>{formatDate(utilizador.dataNasc)}</td>
                             <td>{utilizador.userF}</td>
                             <td>{utilizador.userID}</td>
                             <td>

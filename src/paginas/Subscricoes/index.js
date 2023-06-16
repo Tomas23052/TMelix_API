@@ -7,7 +7,13 @@ import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
 
 
-
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = String(date.getFullYear());
+    return `${day}/${month}/${year}`;
+  }
 
 function Subscricao() {
 
@@ -55,8 +61,10 @@ function Subscricao() {
         }
     )
 
-    const selecionarAluguer = (aluguer, opcao) => {
-        setsubscricaoSelecionada(aluguer);
+    const selecionarSubscricao = (subscricao, opcao) => {
+        setsubscricaoSelecionada(subscricao);
+        (opcao === "Apagar") ? 
+            abrirFecharModalApagar() : abrirFecharModalAdicionar();
         
     }
 
@@ -186,7 +194,7 @@ function Subscricao() {
     const pedidoDelete = async () => {
         await axios.delete(baseUrl + "/" + subscricaoSelecionada.id)
             .then(response => {
-                setData(data.filter(aluguer => aluguer.id !== response.data));
+                setData(data.filter(subscricao => subscricao.id !== response.data));
                 setUpdateData(true);
                 abrirFecharModalApagar();
             }).catch(error => {
@@ -260,14 +268,13 @@ function Subscricao() {
                             <td>{subscricao.utilizador.nome}</td>
                             <td>{subscricao.duracao}</td>
                             <td>{subscricao.preco}</td>
-                            <td>{new Date(subscricao.dataInicio).toLocaleDateString()}</td>
-                            <td>{new Date(subscricao.dataFim).toLocaleDateString()}</td>
+                            <td>{formatDate(subscricao.dataInicio)}</td>
+                            <td>{formatDate(subscricao.dataFim)}</td>
                             <td>{subscricao.filmes.map((filme) => filme.titulo).join(', ')}</td>
                             <td>{subscricao.series.map((serie) => serie.titulo).join(', ')}</td>
 
                             <td>
-                                
-                                <button className="btn btn-danger" onClick={() => selecionarAluguer(subscricao, "Apagar")}>Apagar</button>
+                                <button className="btn btn-danger" onClick={() => selecionarSubscricao(subscricao, "Apagar")}>Apagar</button>
                             </td>
                         </tr>
                     ))}

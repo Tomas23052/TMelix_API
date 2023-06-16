@@ -4,7 +4,7 @@ import axios from "axios";
 import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 
 function Utilizadores(){
-    const baseUrl="https://5683-194-210-240-156.ngrok-free.app//api/UtilizadoresAPI";
+    const baseUrl="https://localhost:7038/api/UtilizadoresAPI";
 
     const [data, setData]=useState([]);
     const [updateData, setUpdateData]=useState([]);
@@ -28,6 +28,12 @@ function Utilizadores(){
      }
     )
 
+    const selecionarUtilizador=(utilizador, caso)=>{
+        setUtilizadorSelecionado(utilizador);
+        (caso==="Editar")?
+        abrirFecharModalEditar():abrirFecharModalEliminar()
+    }
+
     const abrirFecharModalAdicionar=()=>{
         setModalAdicionar(!modalAdicionar);
     }
@@ -42,14 +48,12 @@ function Utilizadores(){
 
     const abrirFecharModalCriado=()=>{
         setModalCriado(!modalCriado);
-        document.body.style.overflow = "visible";
-        document.body.style.paddingRight = "0px";
+       
     }
 
     const abrirFecharModalEditado=()=>{
         setModalEditado(!modalEditado);
-        document.body.style.overflow = "visible";
-        document.body.style.paddingRight = "0px";
+       
     }
 
     const handleChange=e=>{
@@ -71,11 +75,7 @@ function Utilizadores(){
         })
     }
 
-    const selecionarUtilizador=(utilizador, caso)=>{
-        setUtilizadorSelecionado(utilizador);
-        (caso==="Editar")?
-        abrirFecharModalEditar():abrirFecharModalEliminar()
-    }
+    
 
     const pedidoPost=async()=>{
         delete utilizadorSelecionado.id;
@@ -84,7 +84,6 @@ function Utilizadores(){
             setData(data.concat(response.data));
             setUpdateData(true);
             abrirFecharModalAdicionar();
-            abrirFecharModalCriado();
         }).catch(error=>{
             console.log(error);
         })

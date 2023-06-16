@@ -1,4 +1,4 @@
-import './styles.css';
+import '../style.css'
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -147,12 +147,12 @@ useEffect(()=>{
 }, [updateData])
 
   return (
-    <div className="series_container">
+    <div className="series-container">
       <br/>
-      <h3>Series</h3>
-      <header className="App-header">
-        <button onClick={()=> abrirFecharModalAdicionar()} className='btn btn-success'>Adicionar uma Série</button>
-      </header>
+      <h1>Series</h1>
+      <br/>
+        <button onClick={()=> abrirFecharModalAdicionar()} className='btn btn-success'>Adicionar Série</button>
+      <br/>
       <table className='table table-dark table-striped mt-4'>
         <thead>
           <tr>
@@ -176,7 +176,7 @@ useEffect(()=>{
               <td>{serie.titulo}</td>
               <td><img src={serie.imagem} width="70" height="100" alt=""/></td>
               <td className="sinopse">{serie.sinopse}</td>
-              <td>{serie.dataLancamento}</td>
+              <td>{new Date(serie.dataLancamento).toLocaleDateString()}</td>
               <td>{serie.classificacao}</td>
               <td>{serie.elenco}</td>
               <td>{serie.genero}</td>

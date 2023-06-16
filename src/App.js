@@ -5,6 +5,7 @@ import Filmes from './paginas/Filmes';
 import Series from './paginas/Series';
 import Utilizadores from './paginas/Utilizadores';
 import Navbar from './assets/Navbar';
+import Sobre from './paginas/Sobre';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 
@@ -23,7 +24,8 @@ function App() {
             <Route exact path="/Subscricoes" element={<Subscricoes/>}/>       
             <Route exact path="/Filmes" element={<Filmes/>}/>       
             <Route exact path="/Series" element={<Series/>}/>       
-            <Route exact path="/Utilizadores" element={<Utilizadores/>}/>       
+            <Route exact path="/Utilizadores" element={<Utilizadores/>}/>
+            <Route exact path="/Sobre" element={<Sobre/>}/>       
             
         </Routes>
       </div>

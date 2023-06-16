@@ -15,6 +15,7 @@ function Series() {
     const [modalEliminar, setModalEliminar]=useState(false);
     const [modalCriado, setModalCriado]=useState(false);
     const [modalEditado, setModalEditado]=useState(false);
+    const [modalEliminado, setModalEliminado]=useState(false);
 
 const [serieSelecionada, setSerieSelecionada] = useState(
   {
@@ -56,6 +57,12 @@ const abrirFecharModalEditado=()=>{
   document.body.style.paddingRight = "0px";
 }
 
+const abrirFecharModalEliminado=()=>{
+    setModalEliminado(!modalEliminado);
+    document.body.style.overflow = "visible";
+    document.body.style.paddingRight = "0px";
+  }
+
 const handleChange = e=>{
   const {name, value} = e.target;
   setSerieSelecionada({
@@ -82,18 +89,8 @@ const selecionarSerie=(serie,opcao)=>{
 
 const pedidoPost = async () => {
   delete serieSelecionada.id;
-  const formData = new FormData();
-  formData.append("titulo", serieSelecionada.titulo)
-  formData.append("imagem", serieSelecionada.imagem)
-  formData.append("sinopse", serieSelecionada.sinopse)
-  formData.append("dataLancamento", serieSelecionada.dataLancamento)
-  formData.append("classificacao", serieSelecionada.classificacao)
-  formData.append("elenco", serieSelecionada.elenco)
-  formData.append("genero", serieSelecionada.genero)
-  formData.append("temporada", serieSelecionada.temporada)
-  formData.append("episodio", serieSelecionada.episodio)
-  axios.post(baseURL, formData, {
-  }).then(response => {
+  axios.post(baseURL, serieSelecionada
+  ).then(response => {
     setData(data.concat(response.data));
     setUpdateData(true);
     abrirFecharModalAdicionar();
@@ -135,6 +132,7 @@ const pedidoDelete=async()=>{
     setData(data.filter(serie=>serie.id !== response.data));
     setUpdateData(true);
     abrirFecharModalEliminar();
+    abrirFecharModalEliminado();
   }).catch(error=>{
     console.log(error);
   })
@@ -289,7 +287,7 @@ useEffect(()=>{
         <ModalBody>
           <div>A série que introduziu foi adicionado com sucesso!</div>
         </ModalBody>
-        <ModalFooter className="btn btn-primary" onClick={()=>abrirFecharModalCriado()}></ModalFooter>
+        <ModalFooter className="btn btn-primary" onClick={()=>abrirFecharModalCriado()}>OK!</ModalFooter>
       </Modal>
 
       <Modal isOpen={modalEditado}>
@@ -297,8 +295,17 @@ useEffect(()=>{
         <ModalBody>
           <div>A série foi editado com sucesso!</div>
         </ModalBody>
-        <ModalFooter className="btn btn-primary" onClick={()=>abrirFecharModalEditado()}></ModalFooter>
+        <ModalFooter className="btn btn-primary" onClick={()=>abrirFecharModalEditado()}>OK!</ModalFooter>
       </Modal>
+
+      <Modal isOpen={modalEliminado}>
+        <ModalHeader>Série Eliminada</ModalHeader>
+        <ModalBody>
+          <div>A série foi eliminada com sucesso!</div>
+        </ModalBody>
+        <ModalFooter className="btn btn-primary" onClick={()=>abrirFecharModalEliminado()}>OK!</ModalFooter>
+      </Modal>
+
 
     </div>
   );

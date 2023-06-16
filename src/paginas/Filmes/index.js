@@ -16,6 +16,7 @@ function Filmes() {
     const [modalEliminar, setModalEliminar]=useState(false);
     const [modalCriado, setModalCriado]=useState(false);
     const [modalEditado, setModalEditado]=useState(false);
+    const [modalEliminado, setModalEliminado]=useState(false);
 
 
     const [filmeSelecionado, setFilmeSelecionado] = useState(
@@ -51,6 +52,10 @@ function Filmes() {
         setModalEditado(!modalEditado);
       }
 
+      const abrirFecharModalEliminado=()=>{
+        setModalEliminado(!modalEliminado);
+      }
+
       const handleChange=e=>{
         const {name, value}=e.target;
         setFilmeSelecionado({
@@ -84,23 +89,15 @@ function Filmes() {
         abrirFecharModalEditar():abrirFecharModalEliminar()
       }
 
-      const pedidosPost=async()=>{
+      const pedidosPost = async () => {
         delete filmeSelecionado.id;
-        const formData = new FormData();
-        formData.append("titulo", filmeSelecionado.titulo);
-        formData.append("imagem", filmeSelecionado.imagem);
-        formData.append("sinopse", filmeSelecionado.sinopse);
-        formData.append("dataLancamento", filmeSelecionado.dataLancamento);
-        formData.append("classificacao", filmeSelecionado.classificacao);
-        formData.append("elenco", filmeSelecionado.elenco);
-        formData.append("genero", filmeSelecionado.genero);
-        await axios.post(baseURL, formData)
-        .then(response=>{
-          setData(data.concat(response.data))
+        axios.post(baseURL, filmeSelecionado
+        ).then(response => {
+          setData(data.concat(response.data));
           setUpdateData(true);
           abrirFecharModalAdicionar();
           abrirFecharModalCriado();
-        }).catch(error=>{
+        }).catch(error => {
           console.log(error);
         })
       }
@@ -133,7 +130,9 @@ function Filmes() {
             await axios.delete(baseURL+"/"+filmeSelecionado.id)
             .then(response=>{
               setData(data.filter(filme=>filme.id!==response.data));
+              setUpdateData(true);
               abrirFecharModalEliminar();
+              abrirFecharModalEliminado();
             }).catch(error=>{
               console.log(error);
             })
@@ -206,7 +205,7 @@ function Filmes() {
                       <br />
                       <label>Data de Lançamento: </label>
                       <br />
-                      <input type="text" className="form-control" name="dataLancamento" onChange={handleChange}/>
+                      <input type="date" className="form-control" name="dataLancamento" onChange={handleChange}/>
                       <br />
                       <label>Classificação: </label>
                       <br />
@@ -271,16 +270,43 @@ function Filmes() {
                     <button className="btn btn-danger" onClick={()=>abrirFecharModalEditar()}>Cancelar</button>
                   </ModalFooter>
                 </Modal>
-                
+
+
+
                 <Modal isOpen={modalEliminar}>
                   <ModalBody>
-                    Tem certeza que deseja eliminar o filme {filmeSelecionado && filmeSelecionado.titulo}?
+                    Confirma a exclusão deste Série : {filmeSelecionado && filmeSelecionado.titulo} ? 
                   </ModalBody>
                   <ModalFooter>
-                    <button className="btn btn-danger" onClick={()=>pedidosDelete()}>Sim</button>{"  "}
-                    <button className="btn btn-secondary" onClick={()=>abrirFecharModalEliminar()}>Não</button>
+                    <button className='btn btn-danger' onClick={()=>pedidosDelete()}> Sim </button>
+                    <button className='btn btn-secondary' onClick={()=> abrirFecharModalEliminar()}> Não </button>
                   </ModalFooter>
                 </Modal>
+
+                <Modal isOpen={modalCriado}>
+                  <ModalHeader>Filme Adicionado</ModalHeader>
+                  <ModalBody>
+                    <div>O Filme que introduziu foi adicionado com sucesso!</div>
+                  </ModalBody>
+                  <ModalFooter className="btn btn-primary" onClick={()=>abrirFecharModalCriado()}>OK!</ModalFooter>
+                </Modal>
+
+                <Modal isOpen={modalEditado}>
+                  <ModalHeader>Filme Editado</ModalHeader>
+                  <ModalBody>
+                    <div>O Filme foi editado com sucesso!</div>
+                  </ModalBody>
+                  <ModalFooter className="btn btn-primary" onClick={()=>abrirFecharModalEditado()}>OK!</ModalFooter>
+                </Modal>
+                
+                <Modal isOpen={modalEliminado}>
+                  <ModalHeader>Filme Eliminado</ModalHeader>
+                  <ModalBody>
+                    <div>O Filme foi eliminado com sucesso!</div>
+                  </ModalBody>
+                  <ModalFooter className="btn btn-primary" onClick={()=>abrirFecharModalEliminado()}>OK!</ModalFooter>
+                </Modal>
+
               </div>
             </div>
     );

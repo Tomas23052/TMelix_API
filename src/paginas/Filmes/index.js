@@ -1,4 +1,4 @@
-import './styles.css'
+import '../style.css'
 import React, {useState, useEffect} from 'react'
 
 import axios from 'axios';
@@ -147,14 +147,13 @@ function Filmes() {
           , [updateData])
 
           return (
-            <div className="Filmes">
-              <div className="container">
+            <div className="filmes-container">
                 <br />
                 <h1>Filmes</h1>
                 <br />
                 <button className="btn btn-success" onClick={()=>abrirFecharModalAdicionar()}>Adicionar Filme</button>
-                <br /><br />
-                <table className="table table-bordered">
+                <br />
+                <table className="table table-dark table-striped mt-4">
                   <thead>
                     <tr>
                       <th>ID</th>
@@ -173,9 +172,9 @@ function Filmes() {
                       <tr key={filme.id}>
                         <td>{filme.id}</td>
                         <td>{filme.titulo}</td>
-                        <td><img src={filme.imagem} width="50" height="50" alt=""/></td>
+                        <td><img src={filme.imagem} width="70" height="100" alt=""/></td>
                         <td>{filme.sinopse}</td>
-                        <td>{filme.dataLancamento}</td>
+                        <td>{new Date(filme.dataLancamento).toLocaleDateString()}</td>
                         <td>{filme.classificacao}</td>
                         <td>{filme.elenco}</td>
                         <td>{filme.genero}</td>
@@ -249,7 +248,7 @@ function Filmes() {
                       <br />
                       <label>Data de Lançamento: </label>
                       <br />
-                      <input type="text" className="form-control" name="dataLancamento" onChange={handleChange} value={filmeSelecionado && filmeSelecionado.dataLancamento}/>
+                      <input type="date" className="form-control" name="dataLancamento" onChange={handleChange} value={filmeSelecionado && filmeSelecionado.dataLancamento}/>
                       <br />
                       <label>Classificação: </label>
                       <br />
@@ -307,7 +306,6 @@ function Filmes() {
                   <ModalFooter className="btn btn-primary" onClick={()=>abrirFecharModalEliminado()}>OK!</ModalFooter>
                 </Modal>
 
-              </div>
             </div>
     );
 

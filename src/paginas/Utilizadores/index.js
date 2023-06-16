@@ -25,6 +25,7 @@ function Utilizadores(){
         sexo: '',
         dataNasc: '',
         userF: '',
+        userID: ''
      }
     )
 
@@ -85,7 +86,7 @@ function Utilizadores(){
             setUpdateData(true);
             abrirFecharModalAdicionar();
         }).catch(error=>{
-            console.log(error);
+            console.log(error.response.data);
         })
     }
 
@@ -105,13 +106,14 @@ function Utilizadores(){
                     utilizador.sexo=resposta.sexo;
                     utilizador.dataNasc=resposta.dataNasc;
                     utilizador.userF=resposta.userF;
+                    utilizador.userID=resposta.userID;
                 }
             });
             setUpdateData(true);
             abrirFecharModalEditar();
             abrirFecharModalEditado();
         }).catch(error=>{
-            console.log(error);
+            console.log(error.response.data);
         })
     }
 
@@ -151,6 +153,7 @@ function Utilizadores(){
                         <th>Sexo</th>
                         <th>Data de Nascimento</th>
                         <th>Username</th>
+                        <th>UserID</th>
                         <th>Opções</th>
                     </tr>
                 </thead>
@@ -167,6 +170,7 @@ function Utilizadores(){
                             <td>{utilizador.sexo}</td>
                             <td>{utilizador.dataNasc}</td>
                             <td>{utilizador.userF}</td>
+                            <td>{utilizador.userID}</td>
                             <td>
                                 <button className="btn btn-primary" onClick={()=>selecionarUtilizador(utilizador, "Editar")}>Editar</button> {"  "}
                                 <button className="btn btn-danger" onClick={()=>selecionarUtilizador(utilizador, "Eliminar")}>Eliminar</button>
@@ -214,6 +218,9 @@ function Utilizadores(){
                         <label>Função: </label>
                         <br/>
                         <input type="text" className="form-control" name="userF" onChange={handleChange}/>
+                        <label>UserID: </label>
+                        <br/>
+                        <input type="text" className="form-control" name="userID" onChange={handleChange}/>
                     </div>
                 </ModalBody>
                 <ModalFooter>
@@ -265,6 +272,9 @@ function Utilizadores(){
                         <label>Função: </label>
                         <br/>
                         <input type="text" className="form-control" name="userF" onChange={handleChange} value={utilizadorSelecionado && utilizadorSelecionado.userF}/>
+                        <label>UserID: </label>
+                        <br/>
+                        
                     </div>
                 </ModalBody>
                 <ModalFooter>

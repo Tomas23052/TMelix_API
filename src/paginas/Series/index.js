@@ -168,12 +168,12 @@ function Series() {
             <th>Título</th>
             <th>Imagem</th>
             <th>Sinopse</th>
-            <th>Data de Lançamento</th>
+            <th>Lançamento</th>
             <th>Classificação</th>
             <th>Elenco</th>
             <th>Género</th>
-            <th>Nº Temporadas</th>
-            <th>Nº Episódios</th>
+            <th>Temporadas</th>
+            <th>Episódios</th>
             <th>Operação</th>
           </tr>
         </thead>
